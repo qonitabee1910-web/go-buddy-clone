@@ -1,21 +1,25 @@
 import { QrCode, ArrowUpCircle, Compass, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const GoPayCard = () => {
+  const navigate = useNavigate();
+  
   const actions = [
-    { icon: QrCode, label: "Pay", color: "text-gopay-foreground" },
-    { icon: ArrowUpCircle, label: "Top Up", color: "text-gopay-foreground" },
-    { icon: Compass, label: "Explore", color: "text-gopay-foreground" },
-    { icon: Plus, label: "More", color: "text-gopay-foreground" },
+    { icon: QrCode, label: "Pay", color: "text-gopay-foreground", path: "/gopay-pay" },
+    { icon: ArrowUpCircle, label: "Top Up", color: "text-gopay-foreground", path: "/gopay-topup" },
+    { icon: Compass, label: "Explore", color: "text-gopay-foreground", path: "/gopay-explore" },
+    { icon: Plus, label: "More", color: "text-gopay-foreground", path: "/gopay-more" },
   ];
 
   return (
     <section className="mx-4 -mt-1 rounded-2xl bg-gopay p-4 shadow-lg" aria-label="Informasi GoPay">
       <div className="flex items-center justify-between mb-4">
-        <div>
-          <p className="text-xs font-medium text-gopay-foreground/70 uppercase tracking-wider">gopay</p>
-          <p className="text-xl font-bold text-gopay-foreground">Rp 1.250.000</p>
+        <div className="cursor-pointer group" onClick={() => navigate("/gopay-history")}>
+          <p className="text-xs font-medium text-gopay-foreground/70 uppercase tracking-wider group-hover:text-white transition-colors">gopay</p>
+          <p className="text-xl font-bold text-gopay-foreground group-hover:scale-105 transition-transform origin-left">Rp 1.250.000</p>
         </div>
         <button 
+          onClick={() => navigate("/gopay-topup")}
           className="rounded-full bg-gopay-foreground/20 px-3 py-1 text-xs font-bold text-gopay-foreground hover:bg-gopay-foreground/30 transition-colors active:scale-95"
           aria-label="Isi saldo GoPay"
         >
@@ -26,6 +30,7 @@ const GoPayCard = () => {
         {actions.map((action) => (
           <button 
             key={action.label} 
+            onClick={() => navigate(action.path)}
             className="flex flex-col items-center gap-1.5 rounded-xl py-2 hover:bg-gopay-foreground/10 transition-all active:scale-95"
             aria-label={action.label}
           >

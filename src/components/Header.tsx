@@ -1,10 +1,13 @@
 import { Bell, Search, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="sticky top-0 z-50 bg-card px-4 py-3 shadow-sm">
       <div className="mx-auto flex max-w-lg items-center gap-3">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 cursor-pointer" onClick={() => navigate("/")}>
           <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
             <span className="text-primary-foreground font-extrabold text-sm">G</span>
           </div>
@@ -22,6 +25,7 @@ const Header = () => {
         </div>
 
         <button 
+          onClick={() => navigate("/notifications")}
           className="relative p-2 rounded-full hover:bg-muted transition-colors active:scale-95"
           aria-label="Notifikasi"
         >
@@ -30,6 +34,7 @@ const Header = () => {
         </button>
 
         <button 
+          onClick={() => navigate("/profile")}
           className="p-1 rounded-full border-2 border-primary hover:bg-primary/10 transition-colors active:scale-95"
           aria-label="Profil Pengguna"
         >

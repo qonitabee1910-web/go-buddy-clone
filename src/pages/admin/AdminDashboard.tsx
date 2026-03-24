@@ -2,12 +2,13 @@ import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, ClipboardList, Package, TrendingUp, DollarSign } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const stats = [
-  { label: "Total Pengguna", value: "12,345", icon: Users, change: "+12.5%", color: "text-blue-500", bg: "bg-blue-100" },
-  { label: "Total Pesanan", value: "1,240", icon: ClipboardList, change: "+5.2%", color: "text-green-500", bg: "bg-green-100" },
-  { label: "Total Layanan", value: "12", icon: Package, change: "0%", color: "text-orange-500", bg: "bg-orange-100" },
-  { label: "Total Pendapatan", value: "Rp 125,4M", icon: DollarSign, change: "+18.2%", color: "text-purple-500", bg: "bg-purple-100" },
+  { label: "Total Pengguna", value: "12,345", icon: Users, change: "+12.5%", color: "text-blue-500", bg: "bg-blue-100", path: "/admin/users" },
+  { label: "Total Pesanan", value: "1,240", icon: ClipboardList, change: "+5.2%", color: "text-green-500", bg: "bg-green-100", path: "/admin/orders" },
+  { label: "Total Layanan", value: "12", icon: Package, change: "0%", color: "text-orange-500", bg: "bg-orange-100", path: "/admin/services" },
+  { label: "Total Pendapatan", value: "Rp 125,4M", icon: DollarSign, change: "+18.2%", color: "text-purple-500", bg: "bg-purple-100", path: "/admin/earnings" },
 ];
 
 const recentOrders = [
@@ -18,6 +19,8 @@ const recentOrders = [
 ];
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
+
   return (
     <AdminLayout>
       <div className="flex flex-col gap-8">
@@ -28,7 +31,11 @@ export default function AdminDashboard() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
-            <Card key={stat.label} className="border-none shadow-sm hover:shadow-md transition-shadow">
+            <Card 
+              key={stat.label} 
+              className="border-none shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
+              onClick={() => navigate(stat.path)}
+            >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-2 rounded-xl ${stat.bg}`}>
@@ -51,7 +58,12 @@ export default function AdminDashboard() {
           <Card className="lg:col-span-2 border-none shadow-sm">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg font-bold">Pesanan Terbaru</CardTitle>
-              <button className="text-sm font-bold text-primary hover:underline underline-offset-4">Lihat Semua</button>
+              <button 
+                onClick={() => navigate("/admin/orders")}
+                className="text-sm font-bold text-primary hover:underline underline-offset-4"
+              >
+                Lihat Semua
+              </button>
             </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
@@ -67,7 +79,11 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody className="divide-y">
                     {recentOrders.map((order) => (
-                      <tr key={order.id} className="hover:bg-muted/30 transition-colors">
+                      <tr 
+                        key={order.id} 
+                        className="hover:bg-muted/30 transition-colors cursor-pointer"
+                        onClick={() => navigate(`/admin/orders/${order.id}`)}
+                      >
                         <td className="py-4 font-bold">{order.id}</td>
                         <td className="py-4">{order.user}</td>
                         <td className="py-4 font-medium">{order.service}</td>

@@ -1,16 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 const promos = [
-  { id: 1, title: "GoFood Deals", desc: "Diskon 50% makanan favorit!", tag: "MAKANAN", color: "border-l-destructive" },
-  { id: 2, title: "GoRide Hemat", desc: "Potongan Rp10.000 perjalanan", tag: "TRANSPORT", color: "border-l-primary" },
-  { id: 3, title: "GoPay Cashback", desc: "Cashback 20% di merchant pilihan", tag: "PEMBAYARAN", color: "border-l-gopay" },
-  { id: 4, title: "GoMart Gratis Ongkir", desc: "Belanja kebutuhan tanpa ongkir", tag: "BELANJA", color: "border-l-accent" },
+  { id: 1, title: "GoFood Deals", desc: "Diskon 50% makanan favorit!", tag: "MAKANAN", color: "border-l-destructive", path: "/gofood" },
+  { id: 2, title: "GoRide Hemat", desc: "Potongan Rp10.000 perjalanan", tag: "TRANSPORT", color: "border-l-primary", path: "/goride" },
+  { id: 3, title: "GoPay Cashback", desc: "Cashback 20% di merchant pilihan", tag: "PEMBAYARAN", color: "border-l-gopay", path: "/promo" },
+  { id: 4, title: "GoMart Gratis Ongkir", desc: "Belanja kebutuhan tanpa ongkir", tag: "BELANJA", color: "border-l-accent", path: "/gomart" },
 ];
 
 const PromoSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="mt-8 pb-24" aria-label="Promo Khusus">
       <div className="px-4 flex items-center justify-between mb-4">
         <h2 className="text-lg font-extrabold text-foreground tracking-tight">Promo untukmu</h2>
-        <button className="text-sm font-bold text-primary hover:underline underline-offset-4 transition-all">
+        <button 
+          onClick={() => navigate("/promo")}
+          className="text-sm font-bold text-primary hover:underline underline-offset-4 transition-all"
+        >
           Lihat semua
         </button>
       </div>
@@ -18,7 +25,8 @@ const PromoSection = () => {
         {promos.map((promo) => (
           <div
             key={promo.id}
-            className={`min-w-[260px] rounded-2xl bg-card p-5 shadow-sm border border-border/50 border-l-4 ${promo.color} flex-shrink-0 snap-start hover:shadow-md transition-shadow duration-300`}
+            onClick={() => navigate(promo.path)}
+            className={`min-w-[260px] rounded-2xl bg-card p-5 shadow-sm border border-border/50 border-l-4 ${promo.color} flex-shrink-0 snap-start hover:shadow-md transition-shadow duration-300 cursor-pointer active:scale-[0.98]`}
           >
             <span className="text-[10px] font-extrabold text-muted-foreground tracking-widest uppercase">{promo.tag}</span>
             <h3 className="text-base font-bold text-card-foreground mt-1.5 leading-tight">{promo.title}</h3>

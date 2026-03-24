@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const banners = [
-  { id: 1, title: "GoFood Festival", subtitle: "Diskon hingga 60%! 🍔", gradient: "from-primary to-primary/70" },
-  { id: 2, title: "GoCar Hemat", subtitle: "Cashback 30% dengan GoPay 🚗", gradient: "from-gopay to-gopay/70" },
-  { id: 3, title: "GoMart Belanja", subtitle: "Gratis ongkir minimal 50rb 🛒", gradient: "from-destructive to-destructive/70" },
+  { id: 1, title: "GoFood Festival", subtitle: "Diskon hingga 60%! 🍔", gradient: "from-primary to-primary/70", path: "/gofood" },
+  { id: 2, title: "GoCar Hemat", subtitle: "Cashback 30% dengan GoPay 🚗", gradient: "from-gopay to-gopay/70", path: "/gocar" },
+  { id: 3, title: "GoMart Belanja", subtitle: "Gratis ongkir minimal 50rb 🛒", gradient: "from-destructive to-destructive/70", path: "/gomart" },
 ];
 
 const BannerCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -30,7 +32,10 @@ const BannerCarousel = () => {
             >
               <h3 className="text-xl font-extrabold text-primary-foreground tracking-tight">{banner.title}</h3>
               <p className="text-sm font-medium text-primary-foreground/90 mt-1.5 leading-relaxed">{banner.subtitle}</p>
-              <button className="mt-3 w-fit rounded-full bg-primary-foreground/20 px-4 py-1.5 text-xs font-bold text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
+              <button 
+                onClick={() => navigate(banner.path)}
+                className="mt-3 w-fit rounded-full bg-primary-foreground/20 px-4 py-1.5 text-xs font-bold text-primary-foreground hover:bg-primary-foreground/30 transition-colors"
+              >
                 Cek Sekarang
               </button>
             </div>
