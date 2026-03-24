@@ -7,17 +7,17 @@ const GenericService = () => {
   const path = location.pathname.replace("/", "").toLowerCase();
   
   const services: Record<string, { title: string, icon: LucideIcon, color: string, desc: string }> = {
-    gocar: { title: "GoCar", icon: Car, color: "bg-primary", desc: "Nikmati perjalanan nyaman dengan armada mobil terbaik." },
-    gosend: { title: "GoSend", icon: Send, color: "bg-primary", desc: "Kirim paket instan dan terpercaya dalam satu sentuhan." },
-    gomart: { title: "GoMart", icon: ShoppingCart, color: "bg-destructive", desc: "Belanja kebutuhan harian praktis dari supermarket pilihan." },
-    goshop: { title: "GoShop", icon: ShoppingBag, color: "bg-accent", desc: "Titip belanjaan apapun di mana saja." },
-    goplay: { title: "GoPlay", icon: Play, color: "bg-accent", desc: "Nonton film, serial, dan konten seru lainnya." },
-    gomed: { title: "GoMed", icon: Pill, color: "bg-primary", desc: "Beli obat dan konsultasi kesehatan jadi lebih mudah." },
-    goclub: { title: "GoClub", icon: Star, color: "bg-accent", desc: "Nikmati berbagai keuntungan eksklusif di GoClub." },
-    gobox: { title: "GoBox", icon: Truck, color: "bg-primary", desc: "Kirim barang dalam jumlah besar dengan truk pilihan." }
+    "k-car": { title: "K-Car", icon: Car, color: "bg-primary", desc: "Nikmati perjalanan nyaman dengan armada mobil terbaik." },
+    "k-send": { title: "K-Send", icon: Send, color: "bg-primary", desc: "Kirim paket instan dan terpercaya dalam satu sentuhan." },
+    "k-mart": { title: "K-Mart", icon: ShoppingCart, color: "bg-destructive", desc: "Belanja kebutuhan harian praktis dari supermarket pilihan." },
+    "k-shop": { title: "K-Shop", icon: ShoppingBag, color: "bg-accent", desc: "Titip belanjaan apapun di mana saja." },
+    "k-play": { title: "K-Play", icon: Play, color: "bg-accent", desc: "Nonton film, serial, dan konten seru lainnya." },
+    "k-med": { title: "K-Med", icon: Pill, color: "bg-primary", desc: "Beli obat dan konsultasi kesehatan jadi lebih mudah." },
+    "k-club": { title: "K-Club", icon: Star, color: "bg-accent", desc: "Nikmati berbagai keuntungan eksklusif di K-Club." },
+    "k-box": { title: "K-Box", icon: Truck, color: "bg-primary", desc: "Kirim barang dalam jumlah besar dengan truk pilihan." }
   };
 
-  const currentService = services[path] || { title: "Layanan Gojek", icon: Bike, color: "bg-primary", desc: "Layanan terbaik untuk kebutuhan harianmu." };
+  const currentService = services[path] || { title: "Layanan Klumpang", icon: Bike, color: "bg-primary", desc: "Layanan terbaik untuk kebutuhan harianmu." };
   const Icon = currentService.icon;
 
   return (

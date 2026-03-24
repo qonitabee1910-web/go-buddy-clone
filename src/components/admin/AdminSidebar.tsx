@@ -18,9 +18,9 @@ export function AdminSidebar() {
       <div className="flex h-16 items-center border-b px-6">
         <Link to="/admin" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-extrabold text-sm">G</span>
+            <span className="text-primary-foreground font-extrabold text-sm">K</span>
           </div>
-          <span className="font-extrabold text-xl text-foreground tracking-tight">Admin Gojek</span>
+          <span className="font-extrabold text-xl text-foreground tracking-tight">Admin Klumpang</span>
         </Link>
       </div>
       <nav className="flex-1 space-y-1 px-3 py-4">

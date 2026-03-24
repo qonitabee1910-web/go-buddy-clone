@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const orders = [
-  { id: "ORD-12345", service: "GoRide", date: "24 Mar, 18:30", status: "Selesai", amount: "Rp 15.000", icon: Bike, color: "bg-primary" },
-  { id: "ORD-12346", service: "GoFood", date: "24 Mar, 12:45", status: "Selesai", amount: "Rp 45.000", icon: UtensilsCrossed, color: "bg-destructive" },
-  { id: "ORD-12347", service: "GoCar", date: "23 Mar, 09:15", status: "Dibatalkan", amount: "Rp 32.000", icon: Car, color: "bg-primary" },
-  { id: "ORD-12348", service: "GoSend", date: "22 Mar, 15:20", status: "Selesai", amount: "Rp 12.000", icon: Send, color: "bg-primary" },
+  { id: "ORD-12345", service: "K-Ride", date: "24 Mar, 18:30", status: "Selesai", amount: "Rp 15.000", icon: Bike, color: "bg-primary" },
+  { id: "ORD-12346", service: "K-Food", date: "24 Mar, 12:45", status: "Selesai", amount: "Rp 45.000", icon: UtensilsCrossed, color: "bg-destructive" },
+  { id: "ORD-12347", service: "K-Car", date: "23 Mar, 09:15", status: "Dibatalkan", amount: "Rp 32.000", icon: Car, color: "bg-primary" },
+  { id: "ORD-12348", service: "K-Send", date: "22 Mar, 15:20", status: "Selesai", amount: "Rp 12.000", icon: Send, color: "bg-primary" },
 ];
 
 const Orders = () => {

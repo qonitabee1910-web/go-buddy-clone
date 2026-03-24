@@ -7,14 +7,14 @@ const GoPayService = () => {
   const path = location.pathname.replace("/", "").toLowerCase();
   
   const services: Record<string, { title: string, icon: LucideIcon, color: string, desc: string }> = {
-    "gopay-pay": { title: "Bayar", icon: QrCode, color: "bg-gopay", desc: "Scan kode QR untuk melakukan pembayaran instan." },
-    "gopay-topup": { title: "Top Up", icon: ArrowUpCircle, color: "bg-gopay", desc: "Isi saldo GoPay Anda melalui berbagai metode." },
-    "gopay-explore": { title: "Eksplor", icon: Compass, color: "bg-gopay", desc: "Temukan berbagai promo dan layanan menarik lainnya." },
-    "gopay-more": { title: "Lainnya", icon: Plus, color: "bg-gopay", desc: "Lihat semua layanan dan fitur GoPay." },
-    "gopay-history": { title: "Riwayat Transaksi", icon: History, color: "bg-gopay", desc: "Lihat semua riwayat transaksi GoPay Anda." }
+    "k-pay-pay": { title: "Bayar", icon: QrCode, color: "bg-gopay", desc: "Scan kode QR untuk melakukan pembayaran instan." },
+    "k-pay-topup": { title: "Top Up", icon: ArrowUpCircle, color: "bg-gopay", desc: "Isi saldo K-Pay Anda melalui berbagai metode." },
+    "k-pay-explore": { title: "Eksplor", icon: Compass, color: "bg-gopay", desc: "Temukan berbagai promo dan layanan menarik lainnya." },
+    "k-pay-more": { title: "Lainnya", icon: Plus, color: "bg-gopay", desc: "Lihat semua layanan dan fitur K-Pay." },
+    "k-pay-history": { title: "Riwayat Transaksi", icon: History, color: "bg-gopay", desc: "Lihat semua riwayat transaksi K-Pay Anda." }
   };
 
-  const currentService = services[path] || { title: "GoPay", icon: ArrowUpCircle, color: "bg-gopay", desc: "Layanan pembayaran digital terbaik untukmu." };
+  const currentService = services[path] || { title: "K-Pay", icon: ArrowUpCircle, color: "bg-gopay", desc: "Layanan pembayaran digital terbaik untukmu." };
   const Icon = currentService.icon;
 
   return (
@@ -27,7 +27,7 @@ const GoPayService = () => {
         <p className="text-muted-foreground leading-relaxed">{currentService.desc}</p>
         
         <div className="mt-12 w-full p-8 rounded-3xl bg-muted/50 border border-dashed border-muted-foreground/30">
-          <p className="text-sm font-bold text-muted-foreground italic">Fitur GoPay ini akan segera hadir.</p>
+          <p className="text-sm font-bold text-muted-foreground italic">Fitur K-Pay ini akan segera hadir.</p>
         </div>
       </div>
     </ServiceLayout>

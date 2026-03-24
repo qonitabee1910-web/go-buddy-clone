@@ -1,28 +1,39 @@
 import { Bell, Search, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchValue.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchValue.trim())}`);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-card px-4 py-3 shadow-sm">
       <div className="mx-auto flex max-w-lg items-center gap-3">
         <div className="flex items-center gap-1 cursor-pointer" onClick={() => navigate("/")}>
           <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-extrabold text-sm">G</span>
+            <span className="text-primary-foreground font-extrabold text-sm">K</span>
           </div>
-          <span className="font-extrabold text-lg text-foreground tracking-tight">gojek</span>
+          <span className="font-extrabold text-lg text-foreground tracking-tight">Klumpang GO</span>
         </div>
 
-        <div className="flex-1 relative">
+        <form onSubmit={handleSearch} className="flex-1 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Cari layanan, makanan, & tujuan"
             aria-label="Cari layanan, makanan, dan tujuan"
             className="w-full rounded-full bg-muted pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
           />
-        </div>
+        </form>
 
         <button 
           onClick={() => navigate("/notifications")}

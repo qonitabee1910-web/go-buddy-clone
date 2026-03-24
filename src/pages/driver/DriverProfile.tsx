@@ -80,8 +80,8 @@ const DriverProfile = () => {
               <User className="h-6 w-6" />
             </div>
             <div className="flex-1">
-              <p className="font-black text-base leading-tight tracking-tight uppercase tracking-widest">Kembali ke User App</p>
-              <p className="text-xs font-medium text-white/80 mt-1 tracking-tight">Pesan layanan Gojek</p>
+              <p className="font-black text-base leading-tight tracking-tight uppercase tracking-widest">Kembali ke Klumpang GO</p>
+              <p className="text-xs font-medium text-white/80 mt-1 tracking-tight">Pesan layanan Klumpang</p>
             </div>
             <ChevronRight className="h-5 w-5 text-white/50 group-hover:translate-x-1 transition-transform" />
           </Link>

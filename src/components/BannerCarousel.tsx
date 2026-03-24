@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const banners = [
-  { id: 1, title: "GoFood Festival", subtitle: "Diskon hingga 60%! 🍔", gradient: "from-primary to-primary/70", path: "/gofood" },
-  { id: 2, title: "GoCar Hemat", subtitle: "Cashback 30% dengan GoPay 🚗", gradient: "from-gopay to-gopay/70", path: "/gocar" },
-  { id: 3, title: "GoMart Belanja", subtitle: "Gratis ongkir minimal 50rb 🛒", gradient: "from-destructive to-destructive/70", path: "/gomart" },
+  { id: 1, title: "K-Food Festival", subtitle: "Diskon hingga 60%! 🍔", gradient: "from-primary to-primary/70", path: "/k-food" },
+  { id: 2, title: "K-Car Hemat", subtitle: "Cashback 30% dengan K-Pay 🚗", gradient: "from-gopay to-gopay/70", path: "/k-car" },
+  { id: 3, title: "K-Mart Belanja", subtitle: "Gratis ongkir minimal 50rb 🛒", gradient: "from-destructive to-destructive/70", path: "/k-mart" },
 ];
 
 const BannerCarousel = () => {

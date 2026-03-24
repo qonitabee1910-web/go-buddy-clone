@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
 const promos = [
-  { id: 1, title: "GoFood Deals", desc: "Diskon 50% makanan favorit!", tag: "MAKANAN", color: "border-l-destructive", path: "/gofood" },
-  { id: 2, title: "GoRide Hemat", desc: "Potongan Rp10.000 perjalanan", tag: "TRANSPORT", color: "border-l-primary", path: "/goride" },
-  { id: 3, title: "GoPay Cashback", desc: "Cashback 20% di merchant pilihan", tag: "PEMBAYARAN", color: "border-l-gopay", path: "/promo" },
-  { id: 4, title: "GoMart Gratis Ongkir", desc: "Belanja kebutuhan tanpa ongkir", tag: "BELANJA", color: "border-l-accent", path: "/gomart" },
+  { id: 1, title: "K-Food Deals", desc: "Diskon 50% makanan favorit!", tag: "MAKANAN", color: "border-l-destructive", path: "/k-food" },
+  { id: 2, title: "K-Ride Hemat", desc: "Potongan Rp10.000 perjalanan", tag: "TRANSPORT", color: "border-l-primary", path: "/k-ride" },
+  { id: 3, title: "K-Pay Cashback", desc: "Cashback 20% di merchant pilihan", tag: "PEMBAYARAN", color: "border-l-gopay", path: "/promo" },
+  { id: 4, title: "K-Mart Gratis Ongkir", desc: "Belanja kebutuhan tanpa ongkir", tag: "BELANJA", color: "border-l-accent", path: "/k-mart" },
 ];
 
 const PromoSection = () => {

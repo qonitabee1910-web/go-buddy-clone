@@ -14,6 +14,7 @@ import GenericService from "./pages/GenericService.tsx";
 import GoPayService from "./pages/GoPayService.tsx";
 import Profile from "./pages/Profile.tsx";
 import Notifications from "./pages/Notifications.tsx";
+import SearchResults from "./pages/SearchResults.tsx";
 import DetailPlaceholder from "./pages/DetailPlaceholder.tsx";
 import DriverHome from "./pages/driver/DriverHome.tsx";
 import DriverEarnings from "./pages/driver/DriverEarnings.tsx";
@@ -42,27 +43,28 @@ const App = () => (
           <Route path="/chat/:id" element={<DetailPlaceholder />} />
           
           {/* Service Routes */}
-          <Route path="/goride" element={<GoRide />} />
-          <Route path="/gofood" element={<GoFood />} />
-          <Route path="/gocar" element={<GenericService />} />
-          <Route path="/gosend" element={<GenericService />} />
-          <Route path="/gomart" element={<GenericService />} />
-          <Route path="/goshop" element={<GenericService />} />
-          <Route path="/goplay" element={<GenericService />} />
-          <Route path="/gomed" element={<GenericService />} />
-          <Route path="/goclub" element={<GenericService />} />
-          <Route path="/gobox" element={<GenericService />} />
+          <Route path="/k-ride" element={<GoRide />} />
+          <Route path="/k-food" element={<GoFood />} />
+          <Route path="/k-car" element={<GenericService />} />
+          <Route path="/k-send" element={<GenericService />} />
+          <Route path="/k-mart" element={<GenericService />} />
+          <Route path="/k-shop" element={<GenericService />} />
+          <Route path="/k-play" element={<GenericService />} />
+          <Route path="/k-med" element={<GenericService />} />
+          <Route path="/k-club" element={<GenericService />} />
+          <Route path="/k-box" element={<GenericService />} />
           
-          {/* GoPay Routes */}
-          <Route path="/gopay-pay" element={<GoPayService />} />
-          <Route path="/gopay-topup" element={<GoPayService />} />
-          <Route path="/gopay-explore" element={<GoPayService />} />
-          <Route path="/gopay-more" element={<GoPayService />} />
-          <Route path="/gopay-history" element={<GoPayService />} />
+          {/* K-Pay Routes */}
+          <Route path="/k-pay-pay" element={<GoPayService />} />
+          <Route path="/k-pay-topup" element={<GoPayService />} />
+          <Route path="/k-pay-explore" element={<GoPayService />} />
+          <Route path="/k-pay-more" element={<GoPayService />} />
+          <Route path="/k-pay-history" element={<GoPayService />} />
           
           {/* Header Routes */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
+          <Route path="/search" element={<SearchResults />} />
 
           {/* Driver Routes */}
           <Route path="/driver" element={<DriverHome />} />

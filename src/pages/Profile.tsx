@@ -18,7 +18,7 @@ const Profile = () => {
                <User className="h-16 w-16 text-primary" />
             </div>
           </div>
-          <h2 className="text-2xl font-black tracking-tight">Pengguna Gojek</h2>
+          <h2 className="text-2xl font-black tracking-tight">Pengguna Klumpang GO</h2>
           <p className="text-sm font-bold text-muted-foreground">+62 812 3456 7890</p>
         </div>
 
@@ -43,7 +43,7 @@ const Profile = () => {
               <Bike className="h-6 w-6" />
             </div>
             <div className="flex-1">
-              <p className="font-bold text-base leading-tight">Driver App</p>
+              <p className="font-bold text-base leading-tight">Klumpang Driver</p>
               <p className="text-xs font-medium text-white/80 mt-0.5">Mulai cari pendapatan</p>
             </div>
           </Link>
@@ -56,7 +56,7 @@ const Profile = () => {
               <Shield className="h-6 w-6" />
             </div>
             <div className="flex-1">
-              <p className="font-bold text-base leading-tight">Admin Dashboard</p>
+              <p className="font-bold text-base leading-tight">Klumpang Admin</p>
               <p className="text-xs font-medium text-white/80 mt-0.5">Akses fitur manajemen aplikasi</p>
             </div>
           </Link>

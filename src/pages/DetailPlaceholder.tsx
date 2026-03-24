@@ -36,14 +36,14 @@ const DetailPlaceholder = () => {
               <CreditCard className="h-5 w-5 text-muted-foreground" />
               <div>
                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mb-1">Metode Pembayaran</p>
-                 <p className="text-sm font-bold">GoPay</p>
+                 <p className="text-sm font-bold">K-Pay</p>
               </div>
            </div>
            <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border/50 shadow-sm">
               <ShieldCheck className="h-5 w-5 text-muted-foreground" />
               <div>
                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none mb-1">Keamanan</p>
-                 <p className="text-sm font-bold">Terlindungi oleh Gojek Shield</p>
+                 <p className="text-sm font-bold">Terlindungi oleh Klumpang Shield</p>
               </div>
            </div>
         </div>

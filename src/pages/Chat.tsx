@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const chats = [
-  { id: "CHAT-1", name: "Agus (GoRide)", lastMessage: "Sudah di lokasi ya kak", time: "18:32", unread: 1 },
-  { id: "CHAT-2", name: "Budi (GoFood)", lastMessage: "Pesanan sedang diproses", time: "12:46", unread: 0 },
+  { id: "CHAT-1", name: "Agus (K-Ride)", lastMessage: "Sudah di lokasi ya kak", time: "18:32", unread: 1 },
+  { id: "CHAT-2", name: "Budi (K-Food)", lastMessage: "Pesanan sedang diproses", time: "12:46", unread: 0 },
   { id: "CHAT-3", name: "Customer Service", lastMessage: "Ada yang bisa kami bantu?", time: "Kemarin", unread: 0 },
 ];
 

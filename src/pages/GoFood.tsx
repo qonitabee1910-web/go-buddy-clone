@@ -3,7 +3,7 @@ import { UtensilsCrossed, Search } from "lucide-react";
 
 const GoFood = () => {
   return (
-    <ServiceLayout title="GoFood">
+    <ServiceLayout title="K-Food">
       <div className="flex flex-col gap-6">
         <div className="relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -19,7 +19,7 @@ const GoFood = () => {
             <UtensilsCrossed className="h-10 w-10 text-primary-foreground" />
           </div>
           <h2 className="text-xl font-black mb-2 tracking-tight">Cari Makanan Favorit</h2>
-          <p className="text-sm text-muted-foreground">Berbagai pilihan restoran lezat menantimu di GoFood.</p>
+          <p className="text-sm text-muted-foreground">Berbagai pilihan restoran lezat menantimu di K-Food.</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

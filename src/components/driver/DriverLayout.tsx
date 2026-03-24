@@ -16,10 +16,10 @@ const DriverLayout = ({ children }: DriverLayoutProps) => {
         <div className="mx-auto flex max-w-lg items-center justify-between">
           <div className="flex items-center gap-3">
              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-black text-lg italic">D</span>
+                <span className="text-primary-foreground font-black text-lg italic">K</span>
              </div>
              <div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest leading-tight">Driver App</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest leading-tight">Klumpang Driver</p>
                 <p className="text-sm font-black tracking-tight leading-tight">Agus Santoso</p>
              </div>
           </div>

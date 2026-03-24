@@ -67,7 +67,7 @@ const DriverPerformance = () => {
         <section aria-label="Program Hadiah">
            <div className="p-8 rounded-3xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl shadow-primary/20 relative overflow-hidden group">
               <div className="relative z-10">
-                 <h3 className="text-xl font-black tracking-tight leading-tight">Program Hadiah GoDriver</h3>
+                 <h3 className="text-xl font-black tracking-tight leading-tight">Program Hadiah K-Driver</h3>
                  <p className="text-sm font-medium text-primary-foreground/80 mt-2 max-w-[80%]">Tingkatkan performa Anda dan dapatkan bonus mingguan hingga Rp 500.000!</p>
                  <button className="mt-6 px-6 py-3 rounded-2xl bg-white text-primary font-black text-xs uppercase tracking-widest shadow-lg hover:bg-white/90 transition-all active:scale-95">
                     Lihat Program

@@ -2,23 +2,23 @@ import { Car, Bike, UtensilsCrossed, Send, ShoppingCart, ShoppingBag, Play, Pill
 import { useNavigate } from "react-router-dom";
 
 const services = [
-  { icon: Bike, label: "GoRide", color: "bg-primary", path: "/goride" },
-  { icon: Car, label: "GoCar", color: "bg-primary", path: "/gocar" },
-  { icon: UtensilsCrossed, label: "GoFood", color: "bg-destructive", path: "/gofood" },
-  { icon: Send, label: "GoSend", color: "bg-primary", path: "/gosend" },
-  { icon: ShoppingCart, label: "GoMart", color: "bg-destructive", path: "/gomart" },
-  { icon: ShoppingBag, label: "GoShop", color: "bg-accent", path: "/goshop" },
-  { icon: Play, label: "GoPlay", color: "bg-accent", path: "/goplay" },
-  { icon: Pill, label: "GoMed", color: "bg-primary", path: "/gomed" },
-  { icon: Star, label: "GoClub", color: "bg-accent", path: "/goclub" },
-  { icon: Truck, label: "GoBox", color: "bg-primary", path: "/gobox" },
+  { icon: Bike, label: "K-Ride", color: "bg-primary", path: "/k-ride" },
+  { icon: Car, label: "K-Car", color: "bg-primary", path: "/k-car" },
+  { icon: UtensilsCrossed, label: "K-Food", color: "bg-destructive", path: "/k-food" },
+  { icon: Send, label: "K-Send", color: "bg-primary", path: "/k-send" },
+  { icon: ShoppingCart, label: "K-Mart", color: "bg-destructive", path: "/k-mart" },
+  { icon: ShoppingBag, label: "K-Shop", color: "bg-accent", path: "/k-shop" },
+  { icon: Play, label: "K-Play", color: "bg-accent", path: "/k-play" },
+  { icon: Pill, label: "K-Med", color: "bg-primary", path: "/k-med" },
+  { icon: Star, label: "K-Club", color: "bg-accent", path: "/k-club" },
+  { icon: Truck, label: "K-Box", color: "bg-primary", path: "/k-box" },
 ];
 
 const ServicesGrid = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="mx-4 mt-6" aria-label="Layanan Gojek">
+    <section className="mx-4 mt-6" aria-label="Layanan Klumpang">
       <div className="grid grid-cols-4 gap-y-5 gap-x-2 sm:grid-cols-5">
         {services.map((service) => (
           <button

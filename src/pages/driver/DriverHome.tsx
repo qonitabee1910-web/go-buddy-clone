@@ -1,17 +1,19 @@
 import DriverLayout from "@/components/driver/DriverLayout";
 import { DollarSign, BarChart3, Star, MapPin, ChevronRight, Package, Bike, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const DriverHome = () => {
+  const navigate = useNavigate();
   const summary = [
-    { icon: DollarSign, label: "Pendapatan Hari Ini", value: "Rp 125.000", color: "text-green-600", bg: "bg-green-100" },
-    { icon: BarChart3, label: "Order Selesai", value: "12", color: "text-blue-600", bg: "bg-blue-100" },
-    { icon: Star, label: "Rating Anda", value: "4.9", color: "text-orange-600", bg: "bg-orange-100" },
+    { icon: DollarSign, label: "Pendapatan Hari Ini", value: "Rp 125.000", color: "text-green-600", bg: "bg-green-100", path: "/driver/earnings" },
+    { icon: BarChart3, label: "Order Selesai", value: "12", color: "text-blue-600", bg: "bg-blue-100", path: "/driver/performance" },
+    { icon: Star, label: "Rating Anda", value: "4.9", color: "text-orange-600", bg: "bg-orange-100", path: "/driver/performance" },
   ];
 
   const incomingOrders = [
-    { id: "ORD-1234", type: "GoRide", distance: "2.5 km", amount: "Rp 15.000", pickup: "Jl. Sudirman No. 12", destination: "Malioboro Mall", color: "bg-primary" },
-    { id: "ORD-5678", type: "GoFood", distance: "1.2 km", amount: "Rp 12.000", pickup: "Ayam Geprek Bu Rum", destination: "Perumahan Indah Permai", color: "bg-destructive" },
+    { id: "ORD-1234", type: "K-Ride", distance: "2.5 km", amount: "Rp 15.000", pickup: "Jl. Sudirman No. 12", destination: "Malioboro Mall", color: "bg-primary" },
+    { id: "ORD-5678", type: "K-Food", distance: "1.2 km", amount: "Rp 12.000", pickup: "Ayam Geprek Bu Rum", destination: "Perumahan Indah Permai", color: "bg-destructive" },
   ];
 
   return (
@@ -20,7 +22,11 @@ const DriverHome = () => {
         {/* Today's Summary */}
         <div className="grid grid-cols-3 gap-3 mt-4">
           {summary.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card border border-border/50 shadow-sm text-center">
+            <div 
+              key={item.label} 
+              onClick={() => navigate(item.path)}
+              className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card border border-border/50 shadow-sm text-center cursor-pointer hover:shadow-md transition-all active:scale-95"
+            >
               <div className={cn("p-2 rounded-xl", item.bg)}>
                 <item.icon className={cn("h-5 w-5", item.color)} />
               </div>
@@ -41,11 +47,15 @@ const DriverHome = () => {
 
           <div className="space-y-4">
             {incomingOrders.map((order) => (
-              <div key={order.id} className="p-5 rounded-3xl bg-card border border-border/50 shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer group">
+              <div 
+                key={order.id} 
+                onClick={() => navigate(`/orders/${order.id}`)}
+                className="p-5 rounded-3xl bg-card border border-border/50 shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer group"
+              >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className={cn("p-2.5 rounded-2xl shadow-sm group-hover:scale-110 transition-transform", order.color)}>
-                      {order.type === "GoRide" ? <Bike className="h-6 w-6 text-white" /> : <Package className="h-6 w-6 text-white" />}
+                      {order.type === "K-Ride" ? <Bike className="h-6 w-6 text-white" /> : <Package className="h-6 w-6 text-white" />}
                     </div>
                     <div>
                        <p className="text-sm font-black tracking-tight">{order.type}</p>
@@ -78,7 +88,13 @@ const DriverHome = () => {
                   </div>
                 </div>
 
-                <button className="w-full mt-6 py-3.5 rounded-2xl bg-primary text-primary-foreground font-black text-sm uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/orders/${order.id}`);
+                  }}
+                  className="w-full mt-6 py-3.5 rounded-2xl bg-primary text-primary-foreground font-black text-sm uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-95"
+                >
                   Terima Order
                 </button>
               </div>
@@ -88,7 +104,10 @@ const DriverHome = () => {
 
         {/* Performance Overview */}
         <section aria-label="Ringkasan Performa">
-           <div className="p-6 rounded-3xl bg-muted/50 border border-border/50 flex items-center justify-between">
+           <div 
+             onClick={() => navigate("/driver/performance")}
+             className="p-6 rounded-3xl bg-muted/50 border border-border/50 flex items-center justify-between cursor-pointer hover:bg-muted/80 transition-all active:scale-95 shadow-sm"
+           >
               <div className="flex gap-4 items-center">
                  <div className="p-3 rounded-2xl bg-white shadow-sm">
                     <BarChart3 className="h-8 w-8 text-primary" />

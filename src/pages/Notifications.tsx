@@ -4,7 +4,7 @@ import { Bell, Tag, Info, AlertTriangle } from "lucide-react";
 const Notifications = () => {
   const notifications = [
     { id: 1, icon: Tag, label: "Promo GoFood!", text: "Diskon 60% khusus untuk makan siangmu hari ini. Cek sekarang!", time: "2 jam yang lalu", color: "bg-destructive/10 text-destructive" },
-    { id: 2, icon: Info, label: "Update Keamanan", text: "Jangan berikan kode OTP Anda kepada siapapun, termasuk pihak Gojek.", time: "1 hari yang lalu", color: "bg-blue-100 text-blue-600" },
+    { id: 2, icon: Info, label: "Update Keamanan", text: "Jangan berikan kode OTP Anda kepada siapapun, termasuk pihak Klumpang GO.", time: "1 hari yang lalu", color: "bg-blue-100 text-blue-600" },
     { id: 3, icon: AlertTriangle, label: "Perjalanan Terakhir", text: "Terima kasih telah menggunakan GoRide! Beri bintang pada pengemudi Anda.", time: "2 hari yang lalu", color: "bg-primary/10 text-primary" },
   ];
 
