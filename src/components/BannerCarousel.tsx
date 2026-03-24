@@ -17,35 +17,39 @@ const BannerCarousel = () => {
   }, []);
 
   return (
-    <div className="mx-4 mt-5">
-      <div className="relative overflow-hidden rounded-2xl">
+    <section className="mx-4 mt-6" aria-label="Banner Promosi">
+      <div className="relative overflow-hidden rounded-2xl shadow-md">
         <div
-          className="flex transition-transform duration-500 ease-out"
+          className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {banners.map((banner) => (
             <div
               key={banner.id}
-              className={`min-w-full bg-gradient-to-r ${banner.gradient} p-6 flex flex-col justify-center min-h-[120px]`}
+              className={`min-w-full bg-gradient-to-br ${banner.gradient} p-6 flex flex-col justify-center min-h-[130px] transition-opacity duration-300`}
             >
-              <h3 className="text-lg font-bold text-primary-foreground">{banner.title}</h3>
-              <p className="text-sm text-primary-foreground/80 mt-1">{banner.subtitle}</p>
+              <h3 className="text-xl font-extrabold text-primary-foreground tracking-tight">{banner.title}</h3>
+              <p className="text-sm font-medium text-primary-foreground/90 mt-1.5 leading-relaxed">{banner.subtitle}</p>
+              <button className="mt-3 w-fit rounded-full bg-primary-foreground/20 px-4 py-1.5 text-xs font-bold text-primary-foreground hover:bg-primary-foreground/30 transition-colors">
+                Cek Sekarang
+              </button>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex justify-center gap-1.5 mt-3">
+      <div className="flex justify-center gap-2 mt-4">
         {banners.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === current ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/30"
+            aria-label={`Slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? "w-8 bg-primary" : "w-2 bg-muted-foreground/20 hover:bg-muted-foreground/40"
             }`}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

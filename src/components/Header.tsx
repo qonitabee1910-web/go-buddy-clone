@@ -16,16 +16,23 @@ const Header = () => {
           <input
             type="text"
             placeholder="Cari layanan, makanan, & tujuan"
-            className="w-full rounded-full bg-muted pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+            aria-label="Cari layanan, makanan, dan tujuan"
+            className="w-full rounded-full bg-muted pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
           />
         </div>
 
-        <button className="relative p-2 rounded-full hover:bg-muted transition-colors">
+        <button 
+          className="relative p-2 rounded-full hover:bg-muted transition-colors active:scale-95"
+          aria-label="Notifikasi"
+        >
           <Bell className="h-5 w-5 text-foreground" />
-          <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-destructive" />
+          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-destructive border-2 border-card" />
         </button>
 
-        <button className="p-1 rounded-full border-2 border-primary">
+        <button 
+          className="p-1 rounded-full border-2 border-primary hover:bg-primary/10 transition-colors active:scale-95"
+          aria-label="Profil Pengguna"
+        >
           <User className="h-5 w-5 text-primary" />
         </button>
       </div>

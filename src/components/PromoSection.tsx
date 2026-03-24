@@ -7,24 +7,26 @@ const promos = [
 
 const PromoSection = () => {
   return (
-    <div className="mt-6 pb-24">
-      <div className="px-4 flex items-center justify-between mb-3">
-        <h2 className="text-base font-bold text-foreground">Promo untukmu</h2>
-        <button className="text-xs font-semibold text-primary">Lihat semua</button>
+    <section className="mt-8 pb-24" aria-label="Promo Khusus">
+      <div className="px-4 flex items-center justify-between mb-4">
+        <h2 className="text-lg font-extrabold text-foreground tracking-tight">Promo untukmu</h2>
+        <button className="text-sm font-bold text-primary hover:underline underline-offset-4 transition-all">
+          Lihat semua
+        </button>
       </div>
-      <div className="flex gap-3 overflow-x-auto px-4 pb-2 scrollbar-hide">
+      <div className="flex gap-4 overflow-x-auto px-4 pb-4 scrollbar-hide snap-x snap-mandatory">
         {promos.map((promo) => (
           <div
             key={promo.id}
-            className={`min-w-[240px] rounded-xl bg-card p-4 shadow-sm border-l-4 ${promo.color} flex-shrink-0`}
+            className={`min-w-[260px] rounded-2xl bg-card p-5 shadow-sm border border-border/50 border-l-4 ${promo.color} flex-shrink-0 snap-start hover:shadow-md transition-shadow duration-300`}
           >
-            <span className="text-[10px] font-bold text-muted-foreground tracking-wider">{promo.tag}</span>
-            <h3 className="text-sm font-bold text-card-foreground mt-1">{promo.title}</h3>
-            <p className="text-xs text-muted-foreground mt-0.5">{promo.desc}</p>
+            <span className="text-[10px] font-extrabold text-muted-foreground tracking-widest uppercase">{promo.tag}</span>
+            <h3 className="text-base font-bold text-card-foreground mt-1.5 leading-tight">{promo.title}</h3>
+            <p className="text-sm text-muted-foreground mt-1 leading-snug">{promo.desc}</p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
