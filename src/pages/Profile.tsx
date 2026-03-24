@@ -61,7 +61,10 @@ const Profile = () => {
             </div>
           </Link>
 
-          <button className="w-full flex items-center gap-4 p-5 rounded-2xl bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive/20 transition-all text-left mt-8 active:scale-[0.98]">
+          <button 
+            onClick={() => navigate("/login")}
+            className="w-full flex items-center gap-4 p-5 rounded-2xl bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive/20 transition-all text-left mt-8 active:scale-[0.98]"
+          >
             <LogOut className="h-6 w-6" />
             <p className="font-black text-base uppercase tracking-widest">Keluar Akun</p>
           </button>

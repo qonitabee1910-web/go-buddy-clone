@@ -7,6 +7,9 @@ import Index from "./pages/Index.tsx";
 import Promo from "./pages/Promo.tsx";
 import Orders from "./pages/Orders.tsx";
 import Chat from "./pages/Chat.tsx";
+import Login from "./pages/Login.tsx";
+import TopUp from "./pages/TopUp.tsx";
+import PayScanner from "./pages/PayScanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import GoRide from "./pages/GoRide.tsx";
 import GoFood from "./pages/GoFood.tsx";
@@ -36,6 +39,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/orders/:id" element={<DetailPlaceholder />} />
@@ -55,8 +59,8 @@ const App = () => (
           <Route path="/k-box" element={<GenericService />} />
           
           {/* K-Pay Routes */}
-          <Route path="/k-pay-pay" element={<GoPayService />} />
-          <Route path="/k-pay-topup" element={<GoPayService />} />
+          <Route path="/k-pay-pay" element={<PayScanner />} />
+          <Route path="/k-pay-topup" element={<TopUp />} />
           <Route path="/k-pay-explore" element={<GoPayService />} />
           <Route path="/k-pay-more" element={<GoPayService />} />
           <Route path="/k-pay-history" element={<GoPayService />} />

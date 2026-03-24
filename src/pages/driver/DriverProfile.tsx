@@ -87,7 +87,10 @@ const DriverProfile = () => {
           </Link>
 
           {/* Logout Button */}
-          <button className="w-full flex items-center gap-4 p-5 rounded-2xl bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive/20 transition-all text-left mt-4 active:scale-[0.98] group">
+          <button 
+            onClick={() => navigate("/login")}
+            className="w-full flex items-center gap-4 p-5 rounded-2xl bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive/20 transition-all text-left mt-4 active:scale-[0.98] group"
+          >
             <LogOut className="h-6 w-6 group-hover:scale-110 transition-transform" />
             <p className="font-black text-base uppercase tracking-widest">Keluar Akun</p>
           </button>

@@ -12,10 +12,10 @@ const stats = [
 ];
 
 const recentOrders = [
-  { id: "ORD-001", user: "Andi Saputra", service: "GoRide", status: "Completed", amount: "Rp 15.000", time: "2 menit yang lalu" },
-  { id: "ORD-002", user: "Budi Santoso", service: "GoFood", status: "In Progress", amount: "Rp 45.000", time: "5 menit yang lalu" },
-  { id: "ORD-003", user: "Citra Lestari", service: "GoCar", status: "Cancelled", amount: "Rp 32.000", time: "10 menit yang lalu" },
-  { id: "ORD-004", user: "Dewi Putri", service: "GoSend", status: "Completed", amount: "Rp 12.000", time: "15 menit yang lalu" },
+  { id: "ORD-001", user: "Andi Saputra", service: "K-Ride", status: "Completed", amount: "Rp 15.000", time: "2 menit yang lalu" },
+  { id: "ORD-002", user: "Budi Santoso", service: "K-Food", status: "In Progress", amount: "Rp 45.000", time: "5 menit yang lalu" },
+  { id: "ORD-003", user: "Citra Lestari", service: "K-Car", status: "Cancelled", amount: "Rp 32.000", time: "10 menit yang lalu" },
+  { id: "ORD-004", user: "Dewi Putri", service: "K-Send", status: "Completed", amount: "Rp 12.000", time: "15 menit yang lalu" },
 ];
 
 export default function AdminDashboard() {

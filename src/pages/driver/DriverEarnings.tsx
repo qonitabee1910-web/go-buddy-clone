@@ -1,8 +1,18 @@
 import DriverLayout from "@/components/driver/DriverLayout";
 import { DollarSign, ChevronRight, TrendingUp, Calendar, CreditCard, ArrowRightLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 const DriverEarnings = () => {
+  const { toast } = useToast();
+
+  const handleWithdraw = () => {
+    toast({
+      title: "Penarikan Diproses",
+      description: "Saldo akan dikirim ke rekening bank Anda dalam waktu 1x24 jam.",
+    });
+  };
+
   const earningsHistory = [
     { id: 1, date: "Hari ini", amount: "Rp 125.000", orders: 12, status: "Sudah Cair" },
     { id: 2, date: "Kemarin", amount: "Rp 150.000", orders: 15, status: "Sudah Cair" },
@@ -27,7 +37,10 @@ const DriverEarnings = () => {
             </div>
             
             <div className="flex gap-3">
-              <button className="flex-1 py-4 rounded-2xl bg-white text-primary font-black text-sm uppercase tracking-widest shadow-md hover:bg-white/90 transition-all active:scale-95">
+              <button 
+                onClick={handleWithdraw}
+                className="flex-1 py-4 rounded-2xl bg-white text-primary font-black text-sm uppercase tracking-widest shadow-md hover:bg-white/90 transition-all active:scale-95"
+              >
                 Tarik Saldo
               </button>
               <button className="p-4 rounded-2xl bg-white/20 text-primary-foreground font-black text-sm uppercase tracking-widest shadow-md hover:bg-white/30 transition-all active:scale-95 flex items-center justify-center">
