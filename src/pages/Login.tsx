@@ -32,9 +32,21 @@ const Login = () => {
         description: "Silakan cek pesan masuk di nomor HP-mu.",
       });
       
-      // For demo purposes, we navigate directly after showing toast
-      // In production, you'd show an OTP input field
-      setTimeout(() => navigate("/"), 2000);
+      // In production, we'd wait for OTP verification
+      // For demo, we check if user profile exists
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('full_name')
+        .eq('phone_number', `+62${phone}`)
+        .single();
+
+      setTimeout(() => {
+        if (profile?.full_name) {
+          navigate("/");
+        } else {
+          navigate("/onboarding");
+        }
+      }, 2000);
     } catch (error: any) {
       console.error("Login error:", error);
       toast({

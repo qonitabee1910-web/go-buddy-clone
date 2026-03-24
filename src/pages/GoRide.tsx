@@ -1,16 +1,87 @@
 import ServiceLayout from "@/components/ServiceLayout";
-import { Bike } from "lucide-react";
+import { Bike, Loader2 } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
 import LocationSearch from "@/components/LocationSearch";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/components/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const GoRide = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [mapCenter, setMapCenter] = useState<[number, number]>([-6.200000, 106.816666]);
   const [destination, setDestination] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLocationSelect = (lat: number, lng: number, address: string) => {
     setMapCenter([lat, lng]);
     setDestination(address);
+  };
+
+  const handleRequestRide = async () => {
+    if (!user) {
+      toast({
+        variant: "destructive",
+        title: "Belum Login",
+        description: "Silakan login terlebih dahulu untuk memesan K-Ride.",
+      });
+      navigate("/login");
+      return;
+    }
+
+    if (!destination) {
+      toast({
+        variant: "destructive",
+        title: "Tujuan Kosong",
+        description: "Silakan pilih lokasi tujuan Anda terlebih dahulu.",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('orders')
+        .insert([
+          {
+            customer_id: user.id,
+            service_type: 'ride',
+            status: 'searching',
+            pickup_address: 'Posisi Saat Ini',
+            destination_address: destination,
+            pickup_lat: -6.200000, // Simulasi koordinat saat ini
+            pickup_lng: 106.816666,
+            destination_lat: mapCenter[0],
+            destination_lng: mapCenter[1],
+            amount: 15000, // Simulasi harga tetap
+          }
+        ])
+        .select();
+
+      if (error) throw error;
+
+      toast({
+        title: "Mencari Driver",
+        description: "Pesanan K-Ride Anda sedang diproses. Mohon tunggu.",
+      });
+
+      // Simulasi trigger Edge Function match-driver
+      // In production, this would be an automatic trigger or a separate call
+      
+      setTimeout(() => navigate("/orders"), 1500);
+    } catch (error: any) {
+      console.error("Order error:", error);
+      toast({
+        variant: "destructive",
+        title: "Gagal Memesan",
+        description: error.message || "Terjadi kesalahan saat membuat pesanan.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,8 +112,13 @@ const GoRide = () => {
             </div>
           </div>
 
-          <button className="w-full mt-8 py-4 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-widest shadow-lg shadow-primary/20 active:scale-95 transition-all">
-            Cari Driver K-Ride
+          <button 
+            onClick={handleRequestRide}
+            disabled={isLoading}
+            className="w-full mt-8 py-4 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-widest shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center"
+          >
+            {isLoading ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : null}
+            {isLoading ? "Memproses..." : "Cari Driver K-Ride"}
           </button>
         </div>
       </div>

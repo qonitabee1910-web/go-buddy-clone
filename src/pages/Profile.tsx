@@ -1,25 +1,59 @@
 import ServiceLayout from "@/components/ServiceLayout";
 import { User, Shield, CreditCard, HelpCircle, LogOut, Bike } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "@/components/AuthProvider";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useToast } from "@/hooks/use-toast";
 
 const Profile = () => {
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
   const menuItems = [
     { icon: Shield, label: "Keamanan Akun", desc: "Ubah PIN, Sandi, & Biometrik" },
     { icon: CreditCard, label: "Metode Pembayaran", desc: "Atur GoPay, Kartu, & Bank" },
     { icon: HelpCircle, label: "Bantuan & Laporan", desc: "Butuh bantuan? Kami di sini." },
   ];
 
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      toast({
+        title: "Berhasil Keluar",
+        description: "Sampai jumpa kembali di Klumpang GO!",
+      });
+      navigate("/login");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Gagal Keluar",
+        description: error.message,
+      });
+    }
+  };
+
   return (
     <ServiceLayout title="Profil Saya">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center justify-center py-4">
-          <div className="h-28 w-28 rounded-full border-4 border-primary p-1 mb-4 shadow-lg">
-            <div className="h-full w-full rounded-full bg-muted flex items-center justify-center overflow-hidden">
-               <User className="h-16 w-16 text-primary" />
-            </div>
-          </div>
-          <h2 className="text-2xl font-black tracking-tight">Pengguna Klumpang GO</h2>
-          <p className="text-sm font-bold text-muted-foreground">+62 812 3456 7890</p>
+          <Avatar className="h-28 w-28 border-4 border-primary p-1 mb-4 shadow-lg">
+            <AvatarImage src={profile?.avatar_url || user?.user_metadata?.avatar_url} />
+            <AvatarFallback className="bg-muted text-primary text-4xl font-black">
+              {profile?.full_name?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || <User className="h-16 w-16" />}
+            </AvatarFallback>
+          </Avatar>
+          <h2 className="text-2xl font-black tracking-tight">
+            {profile?.full_name || "Pengguna Klumpang GO"}
+          </h2>
+          <p className="text-sm font-bold text-muted-foreground">
+            {profile?.phone_number || user?.phone || user?.email || "Nomor belum terdaftar"}
+          </p>
+          {profile?.role && (
+            <span className="mt-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest">
+              Role: {profile.role}
+            </span>
+          )}
         </div>
 
         <div className="space-y-3">
@@ -62,7 +96,7 @@ const Profile = () => {
           </Link>
 
           <button 
-            onClick={() => navigate("/login")}
+            onClick={handleLogout}
             className="w-full flex items-center gap-4 p-5 rounded-2xl bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive/20 transition-all text-left mt-8 active:scale-[0.98]"
           >
             <LogOut className="h-6 w-6" />

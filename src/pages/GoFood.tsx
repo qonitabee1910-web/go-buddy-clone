@@ -1,16 +1,73 @@
 import ServiceLayout from "@/components/ServiceLayout";
-import { UtensilsCrossed, Search, MapPin } from "lucide-react";
+import { UtensilsCrossed, Search, MapPin, Loader2 } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
 import LocationSearch from "@/components/LocationSearch";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/components/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const GoFood = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { toast } = useToast();
   const [mapCenter, setMapCenter] = useState<[number, number]>([-6.200000, 106.816666]);
   const [address, setAddress] = useState("Rumah • Jl. Sudirman No. 123...");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLocationSelect = (lat: number, lng: number, addr: string) => {
     setMapCenter([lat, lng]);
     setAddress(addr);
+  };
+
+  const handleOrderFood = async () => {
+    if (!user) {
+      toast({
+        variant: "destructive",
+        title: "Belum Login",
+        description: "Silakan login untuk memesan K-Food.",
+      });
+      navigate("/login");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const { error } = await supabase
+        .from('orders')
+        .insert([
+          {
+            customer_id: user.id,
+            service_type: 'food',
+            status: 'searching',
+            pickup_address: 'Restoran Pilihan',
+            destination_address: address,
+            pickup_lat: -6.190000,
+            pickup_lng: 106.810000,
+            destination_lat: mapCenter[0],
+            destination_lng: mapCenter[1],
+            amount: 45000,
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Pesanan Dibuat",
+        description: "Mencari driver untuk mengantar makananmu.",
+      });
+
+      setTimeout(() => navigate("/orders"), 1500);
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Gagal Memesan",
+        description: error.message,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -54,6 +111,15 @@ const GoFood = () => {
           </div>
           <h2 className="text-xl font-black mb-2 tracking-tight">Cari Makanan Favorit</h2>
           <p className="text-sm text-muted-foreground">Berbagai pilihan restoran lezat menantimu di K-Food.</p>
+          
+          <button 
+            onClick={handleOrderFood}
+            disabled={isLoading}
+            className="w-full mt-6 py-4 rounded-2xl bg-destructive text-white font-black text-sm uppercase tracking-widest shadow-lg shadow-destructive/20 active:scale-95 transition-all flex items-center justify-center"
+          >
+            {isLoading ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : null}
+            {isLoading ? "Memesan..." : "Pesan Sekarang"}
+          </button>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

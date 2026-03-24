@@ -8,6 +8,7 @@ import Promo from "./pages/Promo.tsx";
 import Orders from "./pages/Orders.tsx";
 import Chat from "./pages/Chat.tsx";
 import Login from "./pages/Login.tsx";
+import Onboarding from "./pages/Onboarding.tsx";
 import TopUp from "./pages/TopUp.tsx";
 import PayScanner from "./pages/PayScanner.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -29,6 +30,8 @@ import AdminServices from "./pages/admin/AdminServices.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
 import AdminSettings from "./pages/admin/AdminSettings.tsx";
 
+import { AuthProvider } from "./components/AuthProvider";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -36,10 +39,12 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-        <Routes>
+      <AuthProvider>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/promo" element={<Promo />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/orders/:id" element={<DetailPlaceholder />} />
@@ -86,6 +91,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

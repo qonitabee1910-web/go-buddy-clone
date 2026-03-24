@@ -1,9 +1,12 @@
 import { Bell, Search, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "@/components/AuthProvider";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { user, profile } = useAuth();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
@@ -46,10 +49,15 @@ const Header = () => {
 
         <button 
           onClick={() => navigate("/profile")}
-          className="p-1 rounded-full border-2 border-primary hover:bg-primary/10 transition-colors active:scale-95"
+          className="flex items-center justify-center active:scale-95 transition-all"
           aria-label="Profil Pengguna"
         >
-          <User className="h-5 w-5 text-primary" />
+          <Avatar className="h-8 w-8 border-2 border-primary">
+            <AvatarImage src={profile?.avatar_url || user?.user_metadata?.avatar_url} />
+            <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">
+              {profile?.full_name?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || <User className="h-4 w-4" />}
+            </AvatarFallback>
+          </Avatar>
         </button>
       </div>
     </header>
