@@ -56,6 +56,18 @@ export default {
           DEFAULT: "hsl(var(--gopay-blue))",
           foreground: "hsl(var(--gopay-blue-foreground))",
         },
+        "driver-success": {
+          DEFAULT: "hsl(var(--driver-success))",
+          light: "hsl(var(--driver-success-light))",
+        },
+        "driver-info": {
+          DEFAULT: "hsl(var(--driver-info))",
+          light: "hsl(var(--driver-info-light))",
+        },
+        "driver-warning": {
+          DEFAULT: "hsl(var(--driver-warning))",
+          light: "hsl(var(--driver-warning-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
