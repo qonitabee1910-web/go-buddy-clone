@@ -47,6 +47,13 @@
 
     --gopay-blue: 210 100% 45%;
     --gopay-blue-foreground: 0 0% 100%;
+
+    --driver-success: 142 71% 45%;
+    --driver-success-light: 142 71% 93%;
+    --driver-info: 217 91% 60%;
+    --driver-info-light: 217 91% 93%;
+    --driver-warning: 38 92% 50%;
+    --driver-warning-light: 38 92% 93%;
   }
 
   .dark {
