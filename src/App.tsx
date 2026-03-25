@@ -93,6 +93,13 @@ const App = () => (
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
 
+          {/* Tenant Routes */}
+          <Route path="/tenant" element={<TenantDashboard />} />
+          <Route path="/tenant/products" element={<TenantProducts />} />
+          <Route path="/tenant/orders" element={<TenantOrders />} />
+          <Route path="/tenant/reports" element={<TenantReports />} />
+          <Route path="/tenant/profile" element={<TenantProfile />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
