@@ -29,6 +29,11 @@ import AdminOrders from "./pages/admin/AdminOrders.tsx";
 import AdminServices from "./pages/admin/AdminServices.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
 import AdminSettings from "./pages/admin/AdminSettings.tsx";
+import TenantDashboard from "./pages/tenant/TenantDashboard.tsx";
+import TenantProducts from "./pages/tenant/TenantProducts.tsx";
+import TenantOrders from "./pages/tenant/TenantOrders.tsx";
+import TenantReports from "./pages/tenant/TenantReports.tsx";
+import TenantProfile from "./pages/tenant/TenantProfile.tsx";
 
 import { AuthProvider } from "./components/AuthProvider";
 
