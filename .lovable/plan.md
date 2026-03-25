@@ -1,48 +1,60 @@
 
 
-## Driver UI/UX untuk Gojek Clone
+## Tenant Dashboard untuk Gojek Clone
 
-Membuat section driver terpisah di `/driver` dengan tampilan khas aplikasi driver Gojek.
+Dashboard untuk merchant/mitra (restoran, toko) yang terhubung dengan aplikasi utama. Mengikuti pola yang sudah ada di Admin Dashboard.
+
+### Konsep Tenant
+Tenant = Mitra usaha (restoran K-Food, toko K-Mart, dll) yang mengelola produk, pesanan, dan pendapatan mereka.
 
 ### Halaman & Komponen
 
-**1. Driver Home (`/driver`)**
-- **DriverHeader**: Nama driver, foto profil, rating bintang, status online/offline toggle
-- **DriverStatsCard**: Kartu statistik hari ini — jumlah order, pendapatan, jam online
-- **DriverOrderCard**: Kartu order masuk (dummy) — nama pelanggan, alamat pickup & dropoff, estimasi jarak & harga, tombol Terima/Tolak
-- **DriverEarnings**: Ringkasan pendapatan mingguan dengan progress bar target
-- **DriverBottomNav**: Navigation bar: Home, Riwayat, Performa, Akun
+**1. Tenant Dashboard (`/tenant`)**
+- Statistik: Total Pesanan Hari Ini, Pendapatan, Produk Aktif, Rating
+- Daftar pesanan masuk terbaru dengan status
+- Grafik pendapatan mingguan (placeholder)
 
-**2. Driver Riwayat (`/driver/history`)**
-- Daftar order yang sudah selesai (dummy data) dengan waktu, rute, dan pendapatan per trip
+**2. Tenant Menu/Produk (`/tenant/products`)**
+- Daftar menu/produk dengan harga, stok, status aktif/nonaktif
+- Tombol tambah produk baru (dummy)
 
-**3. Driver Performa (`/driver/performance`)**
-- Rating rata-rata, completion rate, acceptance rate, tips yang diterima
-- Badge/level driver (Silver, Gold, Platinum)
+**3. Tenant Pesanan (`/tenant/orders`)**
+- Tabel pesanan dengan filter status (Baru, Diproses, Selesai, Dibatalkan)
+- Detail pesanan: item, pelanggan, driver, waktu
 
-**4. Driver Akun (`/driver/account`)**
-- Profil driver: nama, kendaraan, plat nomor, saldo
-- Menu: Bantuan, Pengaturan, Keluar
+**4. Tenant Laporan (`/tenant/reports`)**
+- Ringkasan pendapatan harian/mingguan/bulanan
+- Produk terlaris, jam sibuk
 
-### Komponen Baru
+**5. Tenant Profil (`/tenant/profile`)**
+- Info toko: nama, alamat, jam operasional, foto
+- Pengaturan notifikasi
+
+### File Baru
+
 | File | Deskripsi |
 |------|-----------|
-| `src/pages/driver/DriverHome.tsx` | Halaman utama driver |
-| `src/pages/driver/DriverHistory.tsx` | Riwayat order |
-| `src/pages/driver/DriverPerformance.tsx` | Halaman performa |
-| `src/pages/driver/DriverAccount.tsx` | Halaman akun |
-| `src/components/driver/DriverHeader.tsx` | Header dengan toggle online/offline |
-| `src/components/driver/DriverStatsCard.tsx` | Statistik harian |
-| `src/components/driver/DriverOrderCard.tsx` | Kartu order masuk |
-| `src/components/driver/DriverEarnings.tsx` | Ringkasan pendapatan |
-| `src/components/driver/DriverBottomNav.tsx` | Bottom navigation driver |
+| `src/components/tenant/TenantLayout.tsx` | Layout wrapper (sidebar + header) |
+| `src/components/tenant/TenantSidebar.tsx` | Sidebar navigasi tenant |
+| `src/pages/tenant/TenantDashboard.tsx` | Halaman overview |
+| `src/pages/tenant/TenantProducts.tsx` | Kelola menu/produk |
+| `src/pages/tenant/TenantOrders.tsx` | Kelola pesanan |
+| `src/pages/tenant/TenantReports.tsx` | Laporan pendapatan |
+| `src/pages/tenant/TenantProfile.tsx` | Profil & pengaturan toko |
+
+### Koneksi dengan Aplikasi
+- Tambah 5 route baru di `App.tsx` (`/tenant/*`)
+- Link "Keluar ke User App" di sidebar tenant mengarah ke `/`
+- Link "Keluar ke Admin" di sidebar tenant mengarah ke `/admin`
+- Tombol akses tenant dari Admin sidebar (menu "Tenants")
 
 ### Desain
-- Warna utama tetap hijau Gojek, dengan aksen biru untuk status online
-- Toggle online/offline yang mencolok di header
-- Card-based layout, mobile-first
-- Animasi slide-up untuk order masuk
+- Reuse pola `AdminLayout`/`AdminSidebar` dengan warna aksen oranye untuk membedakan dari Admin (hijau)
+- Mobile-responsive, card-based
+- Semua data dummy/hardcoded
 
-### Routing
-- Tambah route `/driver`, `/driver/history`, `/driver/performance`, `/driver/account` di App.tsx
+### Technical Details
+- Mengikuti pattern existing: `AdminLayout` wraps pages, sidebar dengan active state via `useLocation`
+- Komponen UI shadcn yang sudah ada: Card, Table, Badge, Progress, Tabs
+- Tidak ada backend — semua data hardcoded sesuai scope proyek
 
