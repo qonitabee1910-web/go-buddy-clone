@@ -20,6 +20,9 @@ const DriverEarnings = () => {
     { id: 4, date: "Minggu, 22 Mar", amount: "Rp 210.000", orders: 18, status: "Sudah Cair" },
   ];
 
+  const barHeights = [45, 60, 30, 80, 50, 90, 70];
+  const dayLabels = ["S", "S", "R", "K", "J", "S", "M"];
+
   return (
     <DriverLayout>
       <div className="flex flex-col gap-8 p-4">
@@ -31,54 +34,57 @@ const DriverEarnings = () => {
                 <p className="text-xs font-bold text-primary-foreground/70 uppercase tracking-widest leading-none mb-2">Saldo Dompet Driver</p>
                 <p className="text-4xl font-black text-primary-foreground tracking-tighter">Rp 2.450.000</p>
               </div>
-              <div className="h-14 w-14 rounded-2xl bg-white/20 flex items-center justify-center shadow-lg backdrop-blur-md">
+              <div className="h-14 w-14 rounded-2xl bg-primary-foreground/20 flex items-center justify-center shadow-lg backdrop-blur-md">
                 <CreditCard className="h-8 w-8 text-primary-foreground" />
               </div>
             </div>
-            
+
             <div className="flex gap-3">
-              <button 
+              <button
                 onClick={handleWithdraw}
-                className="flex-1 py-4 rounded-2xl bg-white text-primary font-black text-sm uppercase tracking-widest shadow-md hover:bg-white/90 transition-all active:scale-95"
+                className="flex-1 py-4 rounded-2xl bg-card text-primary font-black text-sm uppercase tracking-widest shadow-md hover:bg-card/90 transition-all active:scale-95"
               >
                 Tarik Saldo
               </button>
-              <button className="p-4 rounded-2xl bg-white/20 text-primary-foreground font-black text-sm uppercase tracking-widest shadow-md hover:bg-white/30 transition-all active:scale-95 flex items-center justify-center">
-                 <ArrowRightLeft className="h-5 w-5" />
+              <button className="p-4 rounded-2xl bg-primary-foreground/20 text-primary-foreground font-black text-sm shadow-md hover:bg-primary-foreground/30 transition-all active:scale-95 flex items-center justify-center">
+                <ArrowRightLeft className="h-5 w-5" />
               </button>
             </div>
           </div>
-          <div className="absolute top-0 right-0 h-full w-1/3 bg-white/10 skew-x-[-15deg] translate-x-1/2 blur-2xl" />
+          <div className="absolute top-0 right-0 h-full w-1/3 bg-primary-foreground/10 skew-x-[-15deg] translate-x-1/2 blur-2xl" />
         </div>
 
-        {/* Weekly Chart Placeholder */}
+        {/* Weekly Chart */}
         <section aria-label="Analisis Pendapatan">
           <div className="p-6 rounded-3xl bg-card border border-border/50 shadow-sm">
-             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-black tracking-tight flex items-center gap-2">
-                   <TrendingUp className="h-5 w-5 text-primary" />
-                   Minggu Ini
-                </h2>
-                <button className="text-xs font-bold text-muted-foreground flex items-center gap-1 hover:text-primary transition-colors">
-                   <Calendar className="h-4 w-4" />
-                   24 Mar - 30 Mar
-                </button>
-             </div>
-             <div className="h-48 w-full flex items-end justify-between gap-2 px-2">
-                {[45, 60, 30, 80, 50, 90, 70].map((height, i) => (
-                   <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
-                      <div 
-                         className={cn("w-full rounded-t-xl transition-all duration-500 group-hover:bg-primary/80 cursor-pointer", i === 5 ? "bg-primary shadow-lg shadow-primary/20" : "bg-muted-foreground/20")} 
-                         style={{ height: `${height}%` }}
-                      />
-                      <span className="text-[10px] font-bold text-muted-foreground uppercase">{['S', 'S', 'R', 'K', 'J', 'S', 'M'][i]}</span>
-                   </div>
-                ))}
-             </div>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-black tracking-tight flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-primary" />
+                Minggu Ini
+              </h2>
+              <button className="text-xs font-bold text-muted-foreground flex items-center gap-1 hover:text-primary transition-colors">
+                <Calendar className="h-4 w-4" />
+                24 Mar - 30 Mar
+              </button>
+            </div>
+            <div className="h-48 w-full flex items-end justify-between gap-2 px-2">
+              {barHeights.map((height, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
+                  <div
+                    className={cn(
+                      "w-full rounded-t-xl transition-all duration-500 group-hover:opacity-80 cursor-pointer",
+                      i === 5 ? "bg-primary shadow-lg shadow-primary/20" : "bg-muted"
+                    )}
+                    style={{ height: `${height}%` }}
+                  />
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase">{dayLabels[i]}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Transaction History List */}
+        {/* Transaction History */}
         <section aria-label="Riwayat Pendapatan">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-black tracking-tight">Riwayat Harian</h2>
