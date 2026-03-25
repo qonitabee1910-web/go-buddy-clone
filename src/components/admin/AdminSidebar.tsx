@@ -1,4 +1,4 @@
-import { Home, ClipboardList, Users, Package, Settings, LogOut, LayoutDashboard } from "lucide-react";
+import { Home, ClipboardList, Users, Package, Settings, LogOut, LayoutDashboard, Store } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
