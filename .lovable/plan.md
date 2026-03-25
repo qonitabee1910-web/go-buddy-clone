@@ -1,30 +1,48 @@
 
 
-## Gojek Clone — UI Homepage dengan Grid Layanan
+## Driver UI/UX untuk Gojek Clone
+
+Membuat section driver terpisah di `/driver` dengan tampilan khas aplikasi driver Gojek.
 
 ### Halaman & Komponen
 
-**1. Homepage (Index)**
-- **Header**: Logo Gojek, search bar, notifikasi & profil avatar
-- **Banner/Promo Carousel**: Slider promo dengan gambar banner (data dummy)
-- **GoPay Section**: Kartu saldo GoPay dengan tombol Pay, Top Up, Explore
-- **Services Grid**: Grid ikon layanan seperti app asli:
-  - GoRide, GoCar, GoFood, GoSend, GoMart, GoShop, GoPlay, GoMed, GoClub, dan lainnya
-- **Promo Section**: Daftar kartu promo horizontal scrollable
-- **Bottom Navigation Bar**: Home, Promo, Orders, Chat
+**1. Driver Home (`/driver`)**
+- **DriverHeader**: Nama driver, foto profil, rating bintang, status online/offline toggle
+- **DriverStatsCard**: Kartu statistik hari ini — jumlah order, pendapatan, jam online
+- **DriverOrderCard**: Kartu order masuk (dummy) — nama pelanggan, alamat pickup & dropoff, estimasi jarak & harga, tombol Terima/Tolak
+- **DriverEarnings**: Ringkasan pendapatan mingguan dengan progress bar target
+- **DriverBottomNav**: Navigation bar: Home, Riwayat, Performa, Akun
 
-**2. Halaman Sekunder (placeholder sederhana)**
-- `/promo` — Halaman daftar promo
-- `/orders` — Halaman riwayat pesanan (kosong/dummy)
-- `/chat` — Halaman chat (kosong/dummy)
+**2. Driver Riwayat (`/driver/history`)**
+- Daftar order yang sudah selesai (dummy data) dengan waktu, rute, dan pendapatan per trip
+
+**3. Driver Performa (`/driver/performance`)**
+- Rating rata-rata, completion rate, acceptance rate, tips yang diterima
+- Badge/level driver (Silver, Gold, Platinum)
+
+**4. Driver Akun (`/driver/account`)**
+- Profil driver: nama, kendaraan, plat nomor, saldo
+- Menu: Bantuan, Pengaturan, Keluar
+
+### Komponen Baru
+| File | Deskripsi |
+|------|-----------|
+| `src/pages/driver/DriverHome.tsx` | Halaman utama driver |
+| `src/pages/driver/DriverHistory.tsx` | Riwayat order |
+| `src/pages/driver/DriverPerformance.tsx` | Halaman performa |
+| `src/pages/driver/DriverAccount.tsx` | Halaman akun |
+| `src/components/driver/DriverHeader.tsx` | Header dengan toggle online/offline |
+| `src/components/driver/DriverStatsCard.tsx` | Statistik harian |
+| `src/components/driver/DriverOrderCard.tsx` | Kartu order masuk |
+| `src/components/driver/DriverEarnings.tsx` | Ringkasan pendapatan |
+| `src/components/driver/DriverBottomNav.tsx` | Bottom navigation driver |
 
 ### Desain
-- Warna utama hijau Gojek (#00880F / #00AA13)
-- Mobile-first tapi responsive untuk desktop
-- Ikon layanan menggunakan emoji/Lucide icons
-- Font modern, card-based layout
-- Bottom nav fixed di bawah
+- Warna utama tetap hijau Gojek, dengan aksen biru untuk status online
+- Toggle online/offline yang mencolok di header
+- Card-based layout, mobile-first
+- Animasi slide-up untuk order masuk
 
-### Data
-- Semua data dummy/hardcoded (tidak perlu backend)
+### Routing
+- Tambah route `/driver`, `/driver/history`, `/driver/performance`, `/driver/account` di App.tsx
 
