@@ -29,6 +29,11 @@ import AdminOrders from "./pages/admin/AdminOrders.tsx";
 import AdminServices from "./pages/admin/AdminServices.tsx";
 import AdminUsers from "./pages/admin/AdminUsers.tsx";
 import AdminSettings from "./pages/admin/AdminSettings.tsx";
+import TenantDashboard from "./pages/tenant/TenantDashboard.tsx";
+import TenantProducts from "./pages/tenant/TenantProducts.tsx";
+import TenantOrders from "./pages/tenant/TenantOrders.tsx";
+import TenantReports from "./pages/tenant/TenantReports.tsx";
+import TenantProfile from "./pages/tenant/TenantProfile.tsx";
 
 import { AuthProvider } from "./components/AuthProvider";
 
@@ -87,6 +92,13 @@ const App = () => (
           <Route path="/admin/services" element={<AdminServices />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
+
+          {/* Tenant Routes */}
+          <Route path="/tenant" element={<TenantDashboard />} />
+          <Route path="/tenant/products" element={<TenantProducts />} />
+          <Route path="/tenant/orders" element={<TenantOrders />} />
+          <Route path="/tenant/reports" element={<TenantReports />} />
+          <Route path="/tenant/profile" element={<TenantProfile />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
