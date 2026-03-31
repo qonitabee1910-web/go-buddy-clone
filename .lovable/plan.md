@@ -1,60 +1,41 @@
 
 
-## Tenant Dashboard untuk Gojek Clone
+## Setup Native Android App (Capacitor)
 
-Dashboard untuk merchant/mitra (restoran, toko) yang terhubung dengan aplikasi utama. Mengikuti pola yang sudah ada di Admin Dashboard.
+Menggunakan **Capacitor** untuk membungkus aplikasi web menjadi APK Android native.
 
-### Konsep Tenant
-Tenant = Mitra usaha (restoran K-Food, toko K-Mart, dll) yang mengelola produk, pesanan, dan pendapatan mereka.
+### Langkah di Lovable
 
-### Halaman & Komponen
+1. **Install dependencies Capacitor** — `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`
+2. **Inisialisasi Capacitor** — `npx cap init` dengan config:
+   - `appId`: `app.lovable.b7f4980e34ba46bdbd6c952f24c4e2fb`
+   - `appName`: `go-buddy-clone`
+   - Server URL untuk hot-reload: `https://b7f4980e-34ba-46bd-bd6c-952f24c4e2fb.lovableproject.com?forceHideBadge=true`
+3. **Buat file `capacitor.config.ts`** di root project
 
-**1. Tenant Dashboard (`/tenant`)**
-- Statistik: Total Pesanan Hari Ini, Pendapatan, Produk Aktif, Rating
-- Daftar pesanan masuk terbaru dengan status
-- Grafik pendapatan mingguan (placeholder)
+### Langkah di Komputer Anda (setelah setup di Lovable)
 
-**2. Tenant Menu/Produk (`/tenant/products`)**
-- Daftar menu/produk dengan harga, stok, status aktif/nonaktif
-- Tombol tambah produk baru (dummy)
+Anda perlu melakukan langkah berikut di komputer lokal:
 
-**3. Tenant Pesanan (`/tenant/orders`)**
-- Tabel pesanan dengan filter status (Baru, Diproses, Selesai, Dibatalkan)
-- Detail pesanan: item, pelanggan, driver, waktu
+1. **Export ke GitHub** — klik tombol "Export to Github" di Lovable
+2. **Clone & install** — `git clone` lalu `npm install`
+3. **Tambah platform Android** — `npx cap add android`
+4. **Build & sync** — `npm run build && npx cap sync`
+5. **Jalankan di emulator/device** — `npx cap run android`
 
-**4. Tenant Laporan (`/tenant/reports`)**
-- Ringkasan pendapatan harian/mingguan/bulanan
-- Produk terlaris, jam sibuk
+**Prasyarat**: Android Studio harus terinstall di komputer Anda.
 
-**5. Tenant Profil (`/tenant/profile`)**
-- Info toko: nama, alamat, jam operasional, foto
-- Pengaturan notifikasi
+### File yang Diubah/Dibuat
 
-### File Baru
-
-| File | Deskripsi |
+| File | Perubahan |
 |------|-----------|
-| `src/components/tenant/TenantLayout.tsx` | Layout wrapper (sidebar + header) |
-| `src/components/tenant/TenantSidebar.tsx` | Sidebar navigasi tenant |
-| `src/pages/tenant/TenantDashboard.tsx` | Halaman overview |
-| `src/pages/tenant/TenantProducts.tsx` | Kelola menu/produk |
-| `src/pages/tenant/TenantOrders.tsx` | Kelola pesanan |
-| `src/pages/tenant/TenantReports.tsx` | Laporan pendapatan |
-| `src/pages/tenant/TenantProfile.tsx` | Profil & pengaturan toko |
+| `package.json` | Tambah dependencies Capacitor |
+| `capacitor.config.ts` | Konfigurasi Capacitor baru |
 
-### Koneksi dengan Aplikasi
-- Tambah 5 route baru di `App.tsx` (`/tenant/*`)
-- Link "Keluar ke User App" di sidebar tenant mengarah ke `/`
-- Link "Keluar ke Admin" di sidebar tenant mengarah ke `/admin`
-- Tombol akses tenant dari Admin sidebar (menu "Tenants")
+### Catatan Penting
+- APK tidak bisa di-generate langsung di Lovable — perlu Android Studio di komputer lokal
+- Hot-reload tersedia saat development via server URL
+- Untuk publish ke Play Store, build release APK via Android Studio
 
-### Desain
-- Reuse pola `AdminLayout`/`AdminSidebar` dengan warna aksen oranye untuk membedakan dari Admin (hijau)
-- Mobile-responsive, card-based
-- Semua data dummy/hardcoded
-
-### Technical Details
-- Mengikuti pattern existing: `AdminLayout` wraps pages, sidebar dengan active state via `useLocation`
-- Komponen UI shadcn yang sudah ada: Card, Table, Badge, Progress, Tabs
-- Tidak ada backend — semua data hardcoded sesuai scope proyek
+Referensi lengkap: [Lovable Mobile Development Blog](https://docs.lovable.dev/tips-tricks/mobile-development)
 
